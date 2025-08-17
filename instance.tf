@@ -3,7 +3,7 @@ provider "aws" {
 
 }
 resource "aws_instance" "myec2" {
-  ami           = "ami-0c55b159cbfafe1f0"
+  ami           = "ami-0de716d6197524dd9"
   instance_type = "t2.micro"
   key_name      = "new test.pm"
   vpc_security_group_ids = ["mysg"]
