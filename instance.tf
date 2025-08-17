@@ -15,6 +15,7 @@ resource "aws_security_group" "mysg" {
   name        = "mysg"
   description = "Allow SSH inbound traffic"
   ingress {
+    description = "SSH"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -31,6 +32,10 @@ resource "aws_security_group" "mysg" {
 resource "aws_instance" "terraform_example" {
   ami                    = "ami-0de716d6197524dd9"
   instance_type          = "t2.micro"
-  key_name               = "new-test-pm"
+  key_name               = "new-test-pm" // Replace with your actual key pair name
   vpc_security_group_ids = [aws_security_group.mysg.id]
+
+  tags = {
+    Name = "TerraformExampleInstance"
+  }
 }
